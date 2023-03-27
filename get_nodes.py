@@ -30,10 +30,10 @@ def get_nodes_from_list(L):
     for i in X:
         for key, value in i.items():
             V.append(key)
-    for i in L:
-        for j in L.get(i):
-            for k in j:
-                G[i].append(k)
+    for x in L:
+        for y in L.get(x):
+            for z in y:
+                G[x].append(z)
     weight = []
     for node in V:
         weights = {endnode:int(weight)
@@ -42,4 +42,4 @@ def get_nodes_from_list(L):
         weight.append([weights.get(endnode, inf) for endnode in V])
     G = dict(G)
     return V, weight, G
-1
+
