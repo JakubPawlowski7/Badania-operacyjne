@@ -46,3 +46,5 @@ def BellmanFord(G, type, s):
                 
     return d, p
 
+print(BellmanFord(G, 'list', 0))
+
