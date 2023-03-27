@@ -27,24 +27,28 @@ def BellmanFord(G, type, s):
     n = len(G)
     if type == 'matrix':
         V, w, G = get_nodes_from_matrix(G)
-    elif type == 'list':
-        V, w, G = get_nodes_from_list(G)
+    elif type == 'list':                            #Inicjalizacja zmiennych
+        V, w, G = get_nodes_from_list(G)            #Wszystko dokładnie tak jak w pseudokodzie
     d = [inf for i in range(n)]
     p = [-1 for i in range(n)]
 
 
-    d[s] = 0
+    d[s] = 0                                        
     
-    m = len(V) - 1
-    for i in range(m):
+    m = len(V) - 1                              #Jako że algorytm Bellmana-Forda działa dla |V| - 1 wierzchołków to należy wziać to pod uwagę
+    for i in range(m):                          #
         for u in range(len(w)):
             for v in range(len(w)):
                 if w[u][v] != inf:
                     if d[v] > d[u] + w[u][v]:
                         d[v] = d[u] + w[u][v]
                         p[v] = u
-                
+    for j in d:
+        if j < 0:
+            print('Negative cycle detected!')
+            return None
+    
     return d, p
 
-print(BellmanFord(G, 'list', 0))
+print(BellmanFord(G2, 'list', 0))
 
