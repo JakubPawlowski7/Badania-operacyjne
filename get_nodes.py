@@ -34,6 +34,9 @@ def get_nodes_from_list(L):
         for y in L.get(x):
             for z in y:
                 G[x].append(z)
+    del x
+    del y
+    del z
     weight = []
     for node in V:
         weights = {endnode:int(weight)
