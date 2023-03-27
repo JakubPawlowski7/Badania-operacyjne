@@ -4,12 +4,17 @@ from get_nodes import *
 from graphs import *
 from bellmanford import *
 
-
-def Johnson(G, type, s):
-    if type == 'matrix':
-        V, w, G = get_nodes_from_matrix(G)
-    else:
-        V, w, G = get_nodes_from_list(G)
+V, w, G = get_nodes_from_list(G)
+print(V)
+print('\n')
+print(w)
+print('\n')
+print(G)
+def Johnson(G, type, w, s):
+    #if type == 'matrix':
+    #    V, w, G = get_nodes_from_matrix(G)
+    #else:
+    #    V, w, G = get_nodes_from_list(G)
     d, p = BellmanFord(G, type, s)
 
     modifiedGraph = [[0 for x in range(len(graph))] for y in
@@ -20,10 +25,10 @@ def Johnson(G, type, s):
             pass
         else:
             d.remove(i)
-    for u in range(len(w)):
-        for v in range(len(w)):
-            if w[u][v] != inf:
-                modifiedGraph[u][v] = w[u][v] + d[u] - d[v]
+    for x in range(len(w)):
+        for y in range(len(w)):
+            if w[x][y] != inf:
+                modifiedGraph[x][y] = w[x][y] + d[x] - d[y]
     print(modifiedGraph)
 
-Johnson(G, 'list', 0)
+Johnson(G, 'list', w, 0)

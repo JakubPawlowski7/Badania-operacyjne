@@ -13,17 +13,17 @@ def Dijkstra(G, type, s):
     Q = deepcopy(V)
     Q.remove(s)
     u_last = s
-
+    d[s] = 0
     while Q:
-        for u in Q and w[u_last]:
+        for u in Q:
             if d[u_last] + w[u_last][u] < d[u]:
                 d[u] = d[u_last] + w[u_last][u]
                 p[u] = u_last
 
         indicator = inf
         for u in Q:
-            if beta[u] < indicator:
-                indicator = beta[u]
+            if d[u] < indicator:
+                indicator = d[u]
                 u_last = u
         Q.remove(u_last)
     return d, p
